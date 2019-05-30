@@ -1,0 +1,51 @@
+.textStyling {
+    font-weight: 700;
+    font-size: 65px;
+    color: blue;
+}
+
+/* .textStyling.summer {
+    background-image: url("https://i.ytimg.com/vi/VutXr-cn6TQ/hqdefault.jpg?custom=true&w=168&h=94&stc=true&jpg444=true&jpgq=90&sp=67&sigh=eVWZtavCrRj9-7Idh0AE8ezm8Xs");
+    height: 45%;
+    width: 50%;
+    background-repeat: no-repeat;
+}
+
+.textStyling.winter {
+    background-image: url("https://matthew.files.wordpress.com/2013/12/lovely-winter-xmas-scene.gif");
+} */
+
+.topImage {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+}
+
+.bottomImage {
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+}
+
+.season-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.season-display.winter i {
+    color: blue;
+}
+
+.season-display.summer i {
+    color: orange;
+}
+
+.winter {
+    background-color: aliceblue;
+}
+
+.summer {
+    background-color: yellow;
+}

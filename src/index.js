@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay/SeasonDisplay';
+import Loader from './Loader';
+import './index.css';
 
 class App extends React.Component {
     // constructor(props) {
@@ -10,7 +12,7 @@ class App extends React.Component {
     // };
     // equivalent to:
 
-    state= { lat: null, errMessage: '' };
+    state = { lat: null, errMessage: '' };
 
     componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
@@ -19,29 +21,35 @@ class App extends React.Component {
         );
     };
 
+    renderContent() {
+        if (this.state.lat && !this.state.errMessage) {
+            return (
+                <SeasonDisplay 
+                lat={this.state.lat}
+                />
+            )
+        }
+        else if (!this.state.lat && this.state.errMessage) {
+            return (
+                <div>
+                    Ooh, err alert: {this.state.errMessage}
+                </div>
+            )
+        }
+        else {
+            return (
+                <Loader ask="Just a sec! Give us permission to locate you..."/>
+            )
+        }
+    }
+
     render() {
-            if (this.state.lat && !this.state.errMessage) {
-                return (
-                    <SeasonDisplay 
-                    lat={this.state.lat}
-                    />
-                )
-            }
-            else if (!this.state.lat && this.state.errMessage) {
-                return (
-                    <div>
-                        Ooh, err alert: {this.state.errMessage}
-                    </div>
-                )
-            }
-            else {
-                return (
-                    <div>
-                        We're coming with info!
-                    </div>
-                )
-            }
-        };
+        return(
+            <div className={`border`}>
+                {this.renderContent()}
+            </div>
+        )
+    };
     
     // render() {
     //             switch (this.state.lat, this.state.errMessage) {
